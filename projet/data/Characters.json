@@ -1,0 +1,113 @@
+{
+    "Symmetra": {
+       "id": 0,
+       "name": "Symmetra",
+       "description": "Symmetra utilise son projecteur de rayons pour éliminer ses adversaires, protéger ses alliés, placer des téléporteurs et déployer des tourelles sentinelles à particules.",
+       "type": "Soutien",
+       "slug": "symmetra",
+       "capacités": [
+           "Projecteur à Photons",
+           "Tourelle Sentielle",
+           "Écran Photonique",
+           "Téléporteur",
+           "Générateur de bouclier"
+       ],
+       "images": {
+           "icon": "https://vignette.wikia.nocookie.net/overwatch/images/0/0c/Icon-portrait-hexagon.1pA5Q.png/revision/latest?cb=20141109164926",
+           "fiche": "https://playoverwatch.com/fr-fr/heroes/symmetra/"
+       }
+   },
+
+   "Faucheur": {
+       "id": 1,
+       "name": "Faucheur",
+       "description": "Avec Pompes funèbres, sa capacité spectrale lui permettant d’éviter tout dégât et son pouvoir à se déplacer dans les ombres, Faucheur est l’un des êtres les plus redoutables de la planète.",
+       "type": "Attaque",
+       "slug": "faucheur",
+       "capacités": [
+           "Pompes funèbres",
+           "Forme spectrale",
+           "Éclosion mortelle",
+           "Voies des ombres"
+       ],
+       "images": {
+           "icon": "http://vignette4.wikia.nocookie.net/overwatch/images/5/5c/Icon-portrait-hexagon.4Vowj.png/revision/latest?cb=20141109165414",
+           "fiche": "https://playoverwatch.com/fr-fr/heroes/reaper/"
+       }
+   },
+
+   "Ange": {
+       "id": 2,
+       "name": "Ange",
+       "description": "L’armure Valkyrie d’Ange lui permet de veiller sur ses coéquipiers tel un ange gardien. Grâce aux rayons de son Caducée, elle peut les soigner, les ressusciter ou les renforcer.",
+       "type": "Soutien",
+       "slug": "ange",
+       "capacités": [
+           "Caducée",
+           "Miséricorde",
+           "Ange gardien",
+           "Résurrection",
+           "Saut de l'ange",
+           "Valkyrie"
+       ],
+       "images": {
+           "icon": "http://vignette1.wikia.nocookie.net/overwatch/images/2/26/Icon-portrait-hexagon.0Etul.png/revision/latest?cb=20141109170147",
+           "fiche": "https://playoverwatch.com/fr-fr/heroes/mercy/"
+       }
+   },
+
+   "Hanzo": {
+       "id": 3,
+       "name": "Hanzo",
+       "description": "Les flèches polyvalentes de Hanzo peuvent révéler ses ennemis, ou se fragmenter pour toucher plusieurs cibles. Il peut également grimper aux murs pour tirer depuis une position élevée, et invoquer un gigantesque esprit dragon.",
+       "type": "Défense",
+       "slug": "hanzo",
+       "capacités": [
+           "Arc Tempête",
+           "Flèche sonique",
+           "Mille flèches",
+           "Frappe du dragon"
+       ],
+       "images": {
+           "icon": "https://vignette.wikia.nocookie.net/overwatch/images/e/e6/Icon-portrait-hexagon.0AUxZ.png/revision/latest?cb=20141109170155",
+           "fiche": "https://playoverwatch.com/fr-fr/heroes/hanzo/"
+       }
+   },
+
+   "Winston": {
+       "id": 4,
+       "name": "Winston",
+       "description": "Winston manie d’impressionnantes inventions (des propulseurs, un canon Tesla dévastateur et un générateur d’écran portable, entre autres) avec une force littéralement surhumaine.",
+       "type": "Tank",
+       "slug": "winston",
+       "capacités": [
+           "Canon Tesla",
+           "Propulseurs",
+           "Générateur d'écrans",
+           "Rage primordiale"
+       ],
+       "images": {
+           "icon": "https://vignette.wikia.nocookie.net/overwatch/images/7/7b/Icon-portrait-hexagon.0B2ix.png/revision/latest?cb=20141109170233",
+           "fiche": "https://playoverwatch.com/fr-fr/heroes/winston/"
+       }
+   },
+
+   "Fatale": {
+       "id": 5,
+       "name": "Fatale",
+       "description": "Fatale emploie tous les moyens à sa disposition pour éliminer ses cibles : des mines qui diffusent un gaz toxique, une visière qui confère une vision infrarouge à son équipe et un puissant fusil à lunette qui peut tirer en mode automatique.",
+       "type": "Défense",
+       "slug": "fatale",
+       "capacités": [
+           "Baiser de la veuve",
+           "Grappin",
+           "Mine venimeuse",
+           "Infravision"
+       ],
+       "images": {
+           "icon": "http://vignette2.wikia.nocookie.net/overwatch/images/4/45/Icon-portrait-hexagon.1dCOr.png/revision/latest?cb=20141109170213",
+           "fiche": "https://playoverwatch.com/fr-fr/heroes/widowmaker/"
+       }
+   }
+
+}
