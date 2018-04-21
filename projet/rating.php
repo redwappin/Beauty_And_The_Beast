@@ -63,7 +63,7 @@ if (isset($_GET['page'])) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Insert_Players_In_Game.php">
-                        <i class="icon-leaf"></i> Création d'une Partie
+                        Création d'une Partie
                     </a>
                 </li>
             </ul>
@@ -88,10 +88,9 @@ if (isset($_GET['page'])) {
                     <?php }
 
                      else { ?>
-                            <br><p>
+                            <br><h3>
                                 Meilleurs Joueurs :
-                                <!-- OU Séries les mieux notées : -->
-                            </p></br>
+                            </p></h3>
 
                             <!-- Tableau des résultats du classement -->
 
@@ -163,7 +162,7 @@ if (isset($_GET['page'])) {
 
                 <!-- Footer -->
                 <footer class="container">
-                  <p class="float-right"><a href="rating.php">Back to top</a></p>
+                  <p class="float-right"><a href="rating.php?page=1">Back to top</a></p>
                   <p>&copy; 2017-2018 La Belle et la Bête Company, Inc. &middot; <a href="#">Copyright</a> &middot; <a href="#">Terms</a></p>
                 </footer>
         <?php }?>

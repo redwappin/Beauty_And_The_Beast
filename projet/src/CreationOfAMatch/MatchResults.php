@@ -62,7 +62,7 @@ if (isset($_POST['WinnerTeam']))
         $statement->execute();
     }
 session_destroy();
-header('Location: ../rating.php');
+header('Location: ../rating.php?page=1');
 exit();
 }
 

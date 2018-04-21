@@ -116,10 +116,9 @@ $Characters=json_decode($json, true);
 
       <!-- FOOTER -->
       <footer class="container">
-        <p class="float-right"><a href="presentation.php">Back to top</a></p>
+        <p class="float-right"><a href="rating.php?page=1">Back to top</a></p>
         <p>&copy; 2017-2018 La Belle et la Bête Company, Inc. &middot; <a href="#">Copyright</a> &middot; <a href="#">Terms</a></p>
       </footer>
-    </main>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
