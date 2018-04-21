@@ -9,7 +9,7 @@ $Characters=json_decode($json, true);
 $Match=new Match();
 $isCharacterAvailable=true;
 // création de la connexion
-$dsn = 'mysql:dbname=overtwatch;host=127.0.0.1';
+$dsn = 'mysql:dbname=overwatch;host=127.0.0.1';
 $user = 'root';
 $password = '';
 $connection = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
@@ -17,11 +17,11 @@ $connection = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE
 if (isset($_POST['name']) && $_POST['name']!="" )
 {
     $statement = $connection->prepare("
-        SELECT Count(nom_joueur) AS numberOfPlayerWithSameName
-        FROM joueur
-        Where nom_joueur= :nom;
+        SELECT Count(player_Name) AS numberOfPlayerWithSameName
+        FROM player
+        Where player_Name= :name;
     ");
-    $statement->bindValue(':nom', $_POST['name']);
+    $statement->bindValue(':name', $_POST['name']);
     $statement->execute();
     $result=$statement->fetchAll();
 
@@ -38,14 +38,14 @@ if (isset($_POST['name']) && $_POST['name']!="" )
             }
             foreach($_SESSION as $players)
             {
-                if ($players->_getTeam()==$_POST['Team'] && $players->_getCharacterName()==$_POST['character'] || $player->_getName()==$_POST['name'])
+                if ($players->_getTeam()==$_POST['Team'] && $players->_getCharacterName()==$_POST['character'] || $players->_getName()==strtoupper($_POST['name']))
                 {
                      $isCharacterAvailable=false;
                      break;
                 }
             }
         }
-    if ($isCharacterAvailable&&($_POST['Team']=="Blue" && $Match->_getNbOfPlayersInBlueTeam()<3 ||$_POST['Team']=="Red" && $Match->_getNbOfPlayersInRedTeam()<3))
+    if ($isCharacterAvailable && ($_POST['Team']=="Blue" && $Match->_getNbOfPlayersInBlueTeam()<3 ||$_POST['Team']=="Red" && $Match->_getNbOfPlayersInRedTeam()<3))
     {
         $_SESSION[$_POST['name']]=new Player($_POST['name'],$_POST['character'], $_POST['Team']);
         $Match->_setNewPlayerInMatch($_SESSION[$_POST['name']]);
@@ -53,13 +53,12 @@ if (isset($_POST['name']) && $_POST['name']!="" )
         if ($result[0]["numberOfPlayerWithSameName"]==0)
         {
             $statement = $connection->prepare("
-                INSERT INTO `joueur` (`nom_joueur`,`nom_perso`,`Equipe`)
+                INSERT INTO `player` (`player_Name`)
                 VALUES
-                    (:nom_joueur,:nom_perso,:Equipe);
+                    (:player_name);
                 ");
-            $statement->bindValue(':nom_joueur', $_POST['name']);
-            $statement->bindValue(':nom_perso', $_POST['character']);
-            $statement->bindValue(':Equipe', $_POST['Team']);
+            $statement->bindValue(':player_name', strtoupper($_POST['name']));
+
             $statement->execute();
         }
     }

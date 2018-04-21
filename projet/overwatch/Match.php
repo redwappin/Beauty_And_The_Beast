@@ -9,10 +9,10 @@ class Match{
 
     public function _setNewPlayerInMatch(Player $Player){
         array_push($this->PlayersInMatch,$Player);
-        if($Player->_getTeam()== "Rouge"){
+        if($Player->_getTeam()== "Red"){
             $this->NumberOfPlayerInRedTeam=$this->NumberOfPlayerInRedTeam+1;
         }
-        if($Player ->_getTeam()== "Bleue"){
+        if($Player ->_getTeam()== "Blue"){
             $this->NumberOfPlayerInBlueTeam=$this->NumberOfPlayerInBlueTeam+1;
         }
     }

@@ -3,7 +3,7 @@ include('../overwatch/Player.php');
 include('../overwatch/Match.php');
  session_start();
 
-$dsn = 'mysql:dbname=overtwatch;host=127.0.0.1';
+$dsn = 'mysql:dbname=overwatch;host=127.0.0.1';
 $user = 'root';
 $password = '';
 $connection = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
@@ -20,34 +20,45 @@ if (isset($_POST['WinnerTeam']))
    $statement->bindValue(':winner', $_POST['WinnerTeam']);
    $statement->execute();
 
-    foreach($_SESSION as $joueur)
+    foreach($_SESSION as $player)
     {
-        if($joueur->_getTeam()==$_POST['WinnerTeam'])
+        if($player->_getTeam()==$_POST['WinnerTeam'])
         {
             $statement = $connection->prepare("
-                UPDATE joueur
-                SET nb_Victory = nb_Victory+1
-                WHERE nom_joueur=:nom;
+                UPDATE player
+                SET number_of_Victory = number_of_Victory+1,
+                    Points= Points+5
+                WHERE player_Name=:name;
             ");
-            $statement->bindValue(':nom', $joueur->_getName());
+            $statement->bindValue(':name', $player->_getName());
             $statement->execute();
         }
         else
         {
             $statement = $connection->prepare("
-                UPDATE joueur
-                SET nb_Defeat = nb_Defeat+1
-                WHERE nom_joueur=:nom;
+                SELECT Points
+                FROM Player
+                WHERE player_Name=:name;
             ");
-            $statement->bindValue(':nom', $joueur->_getName());
+            $statement->bindValue(':name', $player->_getName());
             $statement->execute();
+            $playerPoints=$statement->fetchAll();
+            if($playerPoints["Points"]>=2){
+                $statement = $connection->prepare("
+                    UPDATE player
+                    SET Points= Points-2
+                    WHERE player_Name=:name;
+                ");
+                $statement->bindValue(':name', $player->_getName());
+                $statement->execute();
+            }
         }
         $statement = $connection->prepare("
-            UPDATE joueur
-            SET pourcentOfVictory =100*(nb_Victory/(nb_Victory+nb_Defeat))
-            WHERE nom_joueur=:nom;
+            UPDATE player
+            SET number_of_Match=number_of_Match+1
+            WHERE player_Name=:name;
         ");
-        $statement->bindValue(':nom', $joueur->_getName());
+        $statement->bindValue(':name', $player->_getName());
         $statement->execute();
     }
 session_destroy();

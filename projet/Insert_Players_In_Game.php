@@ -28,9 +28,14 @@ require_once(__DIR__.'/src/CreationOfAMatch/Setting_Up_Of_Players_In_Game.php');
 
         <div class="container" style="color: grey">
             <?php
-                if (isset($_POST['Team'])&& ($_POST['Team']=="Red" && $Match->_getNbOfPlayersInRedTeam()==3 || $_POST['Team']=="Blue" && $Match->_getNbOfPlayersInBlueTeam()==3)){
+                if (isset($_POST['Team'])&& ($_POST['Team']=="Red" && $Match->_getNbOfPlayersInRedTeam()==3)){
                     print('<div class="alert alert-success" role="alert">
-                    L\'équipe '.$_POST['Team'].' est pleine! Il n\'est plus possible de rajouter de joueurs dans cette équipe! ⛔
+                    L\'équipe rouge est pleine! Il n\'est plus possible de rajouter de joueurs dans cette équipe! ⛔
+                    </div>');
+                }
+                if (isset($_POST['Team'])&& ($_POST['Team']=="Blue" && $Match->_getNbOfPlayersInBlueTeam()==3)){
+                    print('<div class="alert alert-success" role="alert">
+                    L\'équipe bleue est pleine! Il n\'est plus possible de rajouter de joueurs dans cette équipe! ⛔
                     </div>');
                 }
                 else if ($isCharacterAvailable==false)

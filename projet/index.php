@@ -15,6 +15,9 @@ $Characters=json_decode($json, true);
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
@@ -35,14 +38,14 @@ $Characters=json_decode($json, true);
                           <i class="fas fa-home"></i> Accueil
                       </a>
                   </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="rating.php">
+                  <li class="nav-item ">
+                      <a class="nav-link" href="rating.php?page=1">
                           <i class="fas fa-trophy"></i> Classement
                       </a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="Insert_Players_In_Game.php">
-                          <i class="fa fa-shield"></i> Création d'une Partie
+                          <span class="fi-star"></span> Création d'une Partie
                       </a>
                   </li>
               </ul>
@@ -59,7 +62,7 @@ $Characters=json_decode($json, true);
               <div class="carousel-caption text-left">
                 <h1>Welcome in our world !</h1>
                 <p>Sur ce site, vous pourrez faire une partie, voir votre équipe et le classement. N'attendez pas et foncez ! </p>
-                <p><a class="btn btn-lg btn-primary" href="Creation_joueur/createPlayer.php" role="button">Création d'une partie</a></p>
+                <p><a class="btn btn-lg btn-primary" href="Insert_Players_In_Game.php" role="button">Création d'une partie</a></p>
               </div>
             </div>
           </div>
@@ -88,7 +91,6 @@ $Characters=json_decode($json, true);
                 }
             $i++;
             }
-
           ?>
         </div><!-- /.row -->
         <div class="row">

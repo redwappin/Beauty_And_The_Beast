@@ -1,17 +1,26 @@
 <?php
 
-$dsn = 'mysql:dbname=overtwatch;host=127.0.0.1';
+$dsn = 'mysql:dbname=overwatch;host=127.0.0.1';
 $user = 'root';
 $password = '';
 
 $connection = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 $statement = $connection->prepare("
-    SELECT nom_joueur, pourcentOfVictory
-    FROM joueur
-    ORDER BY pourcentOfVictory DESC;
+    SELECT player_Name, Points, number_of_Victory
+    FROM player
+    ORDER BY Points DESC;
 ");
 $statement->execute();
 $rating=$statement->fetchAll();
+
+$countPerPage = 10;
+$pageCount = ceil(count($rating) / $countPerPage);
+
+$page = 1;
+if (isset($_GET['page'])) {
+    $page = (int)$_GET['page'];
+}
+
  ?>
 <!doctype html>
 <html lang="fr">
@@ -30,7 +39,6 @@ $rating=$statement->fetchAll();
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
 
     <!-- Custom CSS -->
-    <link href="css/alphaseries.css" rel="stylesheet">
 </head>
 <body>
     <!-- Barre de navigation -->
@@ -49,13 +57,13 @@ $rating=$statement->fetchAll();
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="rating.php">
+                    <a class="nav-link" href="rating.php?page=1">
                         <i class="fas fa-trophy"></i> Classement
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Insert_Players_In_Game.php">
-                        <i class="icon-leaf"></i> Création d'une Partie 
+                        <i class="icon-leaf"></i> Création d'une Partie
                     </a>
                 </li>
             </ul>
@@ -71,61 +79,94 @@ $rating=$statement->fetchAll();
                     <h2 class="page-title">
                         <i class="fa fa-trophy"></i> Classement
                     </h2>
-                    <p>
-                        Meilleurs Joueurs :
-                        <!-- OU Séries les mieux notées : -->
-                    </p>
+                    <?php if ($rating==[]) {
+                        for ($j=0; $j<5; $j++) {
+                            print("<br></br>");
+                        }
+                        ?>
+                            <center><h1>Il n'y a eu aucun match de joué pour l'instant!<h1></center>
+                    <?php }
 
-                    <!-- Tableau des résultats du classement -->
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Joueurs</th>
-                                <th scope="col">
-                                    Pourcentage de victoire
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i=1;
-                             foreach ($rating as $players){
-                                 print( '<tr> <th scope="row">'.$i.'</th>
-                                             <td><a >'.$players[0].'</a></td>
-                                             <td><div class="progress">
-                                                 <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width:'.$players[1].'%" aria-valuenow="'.$players[1].'" aria-valuemin="0" aria-valuemax="100"></div>
-                                                 </div>
-                                             </td>
-                                         </tr>');
-                                        $i++;
-                            } ?>
+                     else { ?>
+                            <br><p>
+                                Meilleurs Joueurs :
+                                <!-- OU Séries les mieux notées : -->
+                            </p></br>
 
+                            <!-- Tableau des résultats du classement -->
 
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Joueurs</th>
+                                        <th scope="col">
+                                            Nombre de Points
+                                        </th>
+                                        <th scope="col">
+                                            Nombre de victoire
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
 
-
-                        </tbody>
-                    </table>
+                                     for ($i=($_GET['page']*$countPerPage)-$countPerPage;$i<($_GET['page']*$countPerPage);$i++){
+                                         $number=$i+1;
+                                        if(isset($rating[$i][0])){
+                                            print( '<tr> <th scope="row">'.$number.'</th>
+                                                        <td><a >'.$rating[$i][0].'</a></td>
+                                                        <td><a >'.$rating[$i][1].'</a></td>
+                                                        <td><a >'.$rating[$i][2].'</a></td>
+                                                    </tr>');
+                                        }
+                                    } ?>
+                                </tbody>
+                            </table>
 
                     <!-- BONUS Pagination -->
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <?php if ($page > 1) {  ?>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="rating.php?page=<?= $page - 1 ?>">
+                                                            &laquo;
+                                                    </a>
+                                                </li>
+                                    <?php } ?>
 
+                                    <?php for ($i = $page - 2; $i <= $page + 2; $i++) { ?>
+                                            <?php if ($i > 0 && $i <= $pageCount) { ?>
+                                                <li class="page-item <?php if ($i === $page) { print 'active'; } ?>">
+                                                    <a class="page-link" href="rating.php?page=<?= $i ?>">
+                                                        <?= $i ?>
+                                                    </a>
+                                                </li>
+                                            <?php } ?>
+                                    <?php } ?>
 
+                                    <?php if ($page < $pageCount) { ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="rating.php?page=<?= $page + 1 ?>">
+                                                &raquo;
+                                            </a>
+                                        </li>
+                                    <?php } ?>
 
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
 
-            <hr>
-        </main>
+                    <hr>
+                </main>
 
-        <!-- Footer -->
-        <footer class="container">
-          <p class="float-right"><a href="rating.php">Back to top</a></p>
-          <p>&copy; 2017-2018 La Belle et la Bête Company, Inc. &middot; <a href="#">Copyright</a> &middot; <a href="#">Terms</a></p>
-        </footer>
+                <!-- Footer -->
+                <footer class="container">
+                  <p class="float-right"><a href="rating.php">Back to top</a></p>
+                  <p>&copy; 2017-2018 La Belle et la Bête Company, Inc. &middot; <a href="#">Copyright</a> &middot; <a href="#">Terms</a></p>
+                </footer>
+        <?php }?>
 
         <!-- JavaScript Bootstrap -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

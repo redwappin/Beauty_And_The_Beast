@@ -32,8 +32,8 @@ require_once(__DIR__.'/../src/CreationOfAMatch/MatchResults.php');
         <form action="EndMatchForm.php" method="POST">
             <div class="form-group">
                 <select class="form-control" name="WinnerTeam">
-                    <option value="Rouge">Rouge</option>
-                    <option value="Bleue">Bleue</option>
+                    <option value="Red">Rouge</option>
+                    <option value="Blue">Bleue</option>
                 </select>
             </div>
             <div class="form-group">
