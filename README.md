@@ -7,7 +7,7 @@ Bonjour et bienvenue sur notre projet de classement sur OverWatch!
   
   Ensuite en seconde page vous tomberez sur la page de classement où seront affichés les noms des meilleurs joueurs. Le classement est organisé 
   selon un système de points, si un joueur joue une partie et que son équipe gagne, il gagne 5 points sinon il perd deux points si la 
-  différence entre ses points et 2 est supérieur à 0! J'ai oublié de préciser que si il n'il n'y a aucune partie qui a encore été joué, un message s'affiche disant qu'aucune partie n'a encore été jouée!.
+  différence entre ses points et 2 est supérieur à 0! J'ai oublié de préciser que si il n'il n'y a aucune partie qui a encore été joué, un message s'affiche disant qu'aucune partie n'a encore été jouée!
   
   
   Enfin le dernier onglet permet de créer une partie! Le système est simple:  Au depart la liste de joueurs présent dans la partie est vide. Pour ajouter un joueur dans la partie vous devez remplir un formulaire avec votre nom, le nom du personnage que vous voulez jouer et le nom de l'équipe dans laquelle vous souhaitez être.
@@ -16,6 +16,6 @@ Bonjour et bienvenue sur notre projet de classement sur OverWatch!
   Il est interdit de mettre deux fois le même personnage dans une équipe. De plus il est interdit d'utiliser deux fois le même nom de joueur
   dans une partie. Et il vous sera interdit de mettre plus de trois joueurs dans chaque équipe.
   
-  Une fois que la partie est complète, vous serez automatiquement redirigé vers un formulaire de fin de partie donc le background est aléatoire.
-  Une fois que vous aurez renseigné l'équipe gagnante, vous serez redirigé vers la page de classement ou vous pourrez voir le classement de chaque joueurs.
+  Une fois que la partie est complète, vous serez automatiquement redirigé vers un formulaire de fin de partie dont le background est aléatoire.
+  Une fois que vous aurez renseigné l'équipe gagnante, vous serez redirigé vers la page de classement où vous pourrez voir le classement de chaque joueurs.
   Il y a 10 joueurs affichés par page.
