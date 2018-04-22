@@ -2,6 +2,8 @@
 
 Bonjour et bienvenue sur notre projet de classement sur OverWatch!
 
+Pour commencer, vous trouverez le fichier overwatch.sql dans le fichier projet.
+
   Quand vous ouvrirez notre site, vous tomberez sur notre page d'acceuil où vous trouverez les icones des personnages du jeu, leur description
   ainsi qu'un lien vers leur fiche perso!
   
