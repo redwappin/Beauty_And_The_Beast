@@ -88,9 +88,7 @@ if (isset($_GET['page'])) {
                     <?php }
 
                      else { ?>
-                            <br><h3>
-                                Meilleurs Joueurs :
-                            </p></h3>
+                         <br><h1><i class="fa fa-trophy"></i> Classement des Meilleurs Joueurs :</h1><br>
 
                             <!-- Tableau des résultats du classement -->
 
